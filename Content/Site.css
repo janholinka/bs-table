@@ -1,0 +1,150 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+h1, h2, h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.container .inner-container {
+    width: 100%;
+    float: left;
+}
+
+.container .inner-container h2 {
+    font-size: 35px;
+    text-align: center;
+}
+
+.container .inner-container p {
+    width: 100%;
+    text-align: center;
+    float: left;
+    margin: 40px 0 0 0;
+}
+
+.container .inner-container.top-title {
+    padding: 80px 0 80px 0;
+}
+
+.container .inner-container.top-title h1 {
+    width: 100%;
+    font-size: 65px;
+    text-align: center;
+    float: left;
+}
+
+.container .inner-container.top-title h1 span {
+    font-size: 25px;
+}
+
+.container .inner-container.top-title p {
+    width: 100%;
+    text-align: center;
+    float: left;
+    margin: 15px 0 0 0;
+}
+
+.container .inner-container.download {
+    text-align: center;
+}
+
+.container .inner-container.download span {
+    width: 30px;
+    display: inline-block;
+    text-align: center;
+}
+
+.container .inner-container.socials {
+    margin: 60px 0 0 0;
+    position: relative;
+    text-align: center;
+}
+
+.container .inner-container.howtouse h2 {
+    margin: 100px 0 0 0;
+}
+
+.container .inner-container.createdby {
+    margin: 40px 0 0 0;
+    padding: 0 0 30px 0;
+}
+
+.container .inner-container.socials ul {
+    width: 100%;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container .inner-container.socials ul li {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 0 0;
+}
+
+.container .inner-container.socials ul li.tw-btn {
+    width: 82px;
+}
+
+.container .inner-container.socials ul li.g-btn {
+    width: 58px;
+}
+
+.container .inner-container.socials ul li.fb-btn {
+    width: 82px;
+}
+
+.container .inner-container.socials ul li.in-btn {
+    width: 65px;
+}
+
+.container .inner-container .code {
+    margin: 100px 0 0 0;
+}
+
+.container .inner-container .code h2,
+.container .inner-container .code p {
+    text-align: center;
+}
+
+.container .inner-container .code textarea {
+    margin: 30px 0 0 0;
+    overflow: hidden;
+    resize: none;
+}
+
+.container .inner-container .code .action-column{
+    width: 185px;
+}
+
+.container .inner-container .code .table th:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.container .inner-container .code .table tfoot .pagination{
+    float: right;
+    margin: 0;
+}
+
+.container .inner-container .code .table tfoot .pagination li{
+    cursor: pointer;
+}
+
+.container .inner-container .code .table tfoot .select-page-size{
+    width: 90px;
+    float: right;
+    margin-right: 8px;
+}

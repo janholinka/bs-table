@@ -1,1 +1,149 @@
-Init index.html
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" href="Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+
+        <div class="inner-container top-title">
+            <h1><span>&#060table</span> bs-table<span>&#062</span></h1>
+            <p>an <strong>AngularJS</strong> directive</p>
+        </div>
+
+        <div class="inner-container download">
+            <a href="#" class="btn btn-primary"><strong>Download</strong></a>
+            <span>or</span> 
+            <a href="#" class="btn btn-info">view on <strong>GitHub</strong></a>
+        </div>
+
+        <div class="inner-container socials">
+            <ul>
+	            <li class="fb-btn"><a href="http://www.facebook.com/sharer.php" class="socialite facebook-like" data-href="http://bs-table.com" data-send="false" data-layout="button_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a></li>
+	            <li class="tw-btn"><a href="http://twitter.com/share" class="socialite twitter-share" data-url="http://bs-table.com" data-text="BsTable is AngularJS directive." data-via="janholinka" data-hashtags="bs-table" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a></li>
+	            <li class="g-btn"><a href="https://plus.google.com/share" class="socialite googleplus-one" data-size="medium" data-href="http://bs-table.com" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span></a></li>
+	            <li class="in-btn"><a href="http://www.linkedin.com/shareArticle" class="socialite linkedin-share" data-url="http://bs-table.com" data-counter="right" rel="nofollow" target="_blank"><span class="vhidden">Share on LinkedIn</span></a></li>
+            </ul>
+        </div>
+
+        <div class="inner-container howtouse" ng-app="BsTableDirective">
+            <h2 id="working-sample">Working sample</h2>
+            <p>Don't touch!</p>
+            <div class="code" ng-controller="ExampleCtrl">
+                <table class="table table-hover table-bordered" bs-table>
+                    <tr ng-repeat="contact in contactList">
+                        <td data-title="First name">{{contact.FirstName}}</td>
+                        <td data-title="Last name">{{contact.LastName}}</td>
+                        <td data-title="Born date">{{contact.BornDate | date}}</td>
+                        <td data-type="command" class="action-column">
+                            <button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)">Show</button>
+                            <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
+                            <button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)">Remove</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="inner-container howtouse">
+            <h2 id="how-to-use">How to use? It's easy</h2>
+            <p>1. Include necessary source files</p>
+            <div class="code">
+                <textarea class="form-control" readonly="readonly" rows="1">&#060script type="text/javascript" src="/js/bs-table.min.js"&#062&#060/script&#062</textarea>
+            </div>
+        </div>
+
+        <div class="inner-container howtouse">
+            <p>2. Add this css code to your main css file</p>
+            <div class="code">
+                <textarea class="form-control" readonly="readonly" rows="19">
+.action-column{
+    width: 80px;
+}
+.table th:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.table tfoot .pagination{
+    float: right;
+    margin: 0;
+}
+.table tfoot .pagination li{
+    cursor: pointer;
+}
+.table tfoot .select-page-size{
+    width: 90px;
+    float: right;
+    margin-right: 8px;
+}</textarea>
+            </div>
+        </div>
+        
+        <div class="inner-container howtouse">
+            <p>3. Add this html code to your template</p>
+            <div class="code">
+                <textarea class="form-control" readonly="readonly" rows="12">
+    &#060table class="table table-hover table-bordered" bs-table&#062
+        &#060tr ng-repeat="contact in contactList"&#062
+            &#060td data-title="First name"&#062{{contact.FirstName}}&#060/td&#062
+            &#060td data-title="Last name"&#062{{contact.LastName}}&#060/td&#062
+            &#060td data-title="Born date"&#062{{contact.BornDate | date}}&#060/td&#062
+            &#060td data-type="command" class="action-column"&#062
+                &#060button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)"&#062Show&#060/button&#062
+                &#060button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)"&#062Edit&#060/button&#062
+                &#060button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)"&#062Remove&#060/button&#062
+            &#060/td&#062
+        &#060/tr&#062
+    &#060/table&#062</textarea>
+            </div>
+        </div>
+        
+        <div class="inner-container howtouse">
+            <p>4. Add this js code to your controller</p>
+            <div class="code">
+                <textarea class="form-control" readonly="readonly" rows="22">
+    // model for bs-table
+    $scope.contactList = [];
+
+    // get generated list
+    $scope.contactList = GenerateData(40);
+
+    // generate sample data
+    function GenerateData(count) {
+        var dataList = [];
+        for (var i = 0; i < count; i++)
+        {
+            // create object
+            var item = {
+                FirstName: i + " FirstName ",
+                LastName: i + " LastName ",
+                BornDate: "2014-07-10"
+            };
+            // add to list
+            dataList.push(item);
+        }
+        return dataList;
+    }</textarea>
+            </div>
+        </div>
+        
+        <div class="inner-container howtouse">
+            <h2>That's all</h2>
+        </div>
+        
+        <div class="inner-container createdby">
+            <p>Created in Prague by <a href="http://www.janholinka.net">Jan Holinka</a></p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="Scripts/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="Scripts/angular.js"></script>
+    <script type="text/javascript" src="Scripts/bs-table.min.js"></script>
+    <script type="text/javascript" src="Scripts/app/App.js"></script>
+    <script type="text/javascript" src="Scripts/app/Controllers.js"></script>
+    <script type="text/javascript" src="Scripts/socialite.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.page.js"></script>
+</body>
+</html>
