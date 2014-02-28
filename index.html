@@ -1,6 +1,12 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BsTable is an AngularJS directive which allows pagination, sorting and page size selection with data on client side.">
+    <meta name="keywords" content="BsTable, directive, HTML, CSS, JS, JavaScript, bootstrap, bootswatch, front-end, frontend, web development">
+    <meta name="author" content="Jan Holinka">
     <title></title>
     <link type="text/css" href="Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link type="text/css" href="Content/Site.css" rel="stylesheet" />
@@ -14,7 +20,7 @@
         </div>
 
         <div class="inner-container download">
-            <a href="https://github.com/janholinka/bs-table/blob/master/source/bs-table.min.js" class="btn btn-primary"><strong>Download</strong></a>
+            <a href="https://raw.github.com/janholinka/bs-table/master/source/bs-table.min.js" class="btn btn-primary"><strong>Download</strong></a>
             <span>or</span> 
             <a href="https://github.com/janholinka/bs-table" class="btn btn-info">view on <strong>GitHub</strong></a>
         </div>
@@ -51,7 +57,13 @@
             <h2 id="how-to-use">How to use? It's easy</h2>
             <p>1. Include necessary source files</p>
             <div class="code">
-                <textarea class="form-control" readonly="readonly" rows="1">&#060script type="text/javascript" src="/js/bs-table.min.js"&#062&#060/script&#062</textarea>
+                <textarea class="form-control" readonly="readonly" rows="6">
+// you can easily implement any bootstrap theme from http://bootswatch.com
+#060link type="text/css" href="/bootstrap/bootstrap.min.css" rel="stylesheet" /#062
+// include latest jquery.min.js
+&#060script type="text/javascript" src="/js/jquery.min.js"&#062&#060/script&#062
+// include bt-table.min.js
+&#060script type="text/javascript" src="/js/bs-table.min.js"&#062&#060/script&#062</textarea>
             </div>
         </div>
 
@@ -82,50 +94,58 @@
         </div>
         
         <div class="inner-container howtouse">
-            <p>3. Add this html code to your template</p>
+            <p>3. Add dependency to your application</p>
             <div class="code">
-                <textarea class="form-control" readonly="readonly" rows="12">
-    &#060table class="table table-hover table-bordered" bs-table&#062
-        &#060tr ng-repeat="contact in contactList"&#062
-            &#060td data-title="First name"&#062{{contact.FirstName}}&#060/td&#062
-            &#060td data-title="Last name"&#062{{contact.LastName}}&#060/td&#062
-            &#060td data-title="Born date"&#062{{contact.BornDate | date}}&#060/td&#062
-            &#060td data-type="command" class="action-column"&#062
-                &#060button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)"&#062Show&#060/button&#062
-                &#060button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)"&#062Edit&#060/button&#062
-                &#060button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)"&#062Remove&#060/button&#062
-            &#060/td&#062
-        &#060/tr&#062
-    &#060/table&#062</textarea>
+                <textarea class="form-control" readonly="readonly" rows="1">
+angular.module("BsTableApplication", ["bsTable"])</textarea>
             </div>
         </div>
         
         <div class="inner-container howtouse">
-            <p>4. Add this js code to your controller</p>
+            <p>4. Add this html code to your template</p>
+            <div class="code">
+                <textarea class="form-control" readonly="readonly" rows="12">
+&#060table class="table table-hover table-bordered" bs-table&#062
+    &#060tr ng-repeat="contact in contactList"&#062
+        &#060td data-title="First name"&#062{{contact.FirstName}}&#060/td&#062
+        &#060td data-title="Last name"&#062{{contact.LastName}}&#060/td&#062
+        &#060td data-title="Born date"&#062{{contact.BornDate | date}}&#060/td&#062
+        &#060td data-type="command" class="action-column"&#062
+            &#060button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)"&#062Show&#060/button&#062
+            &#060button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)"&#062Edit&#060/button&#062
+            &#060button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)"&#062Remove&#060/button&#062
+        &#060/td&#062
+    &#060/tr&#062
+&#060/table&#062</textarea>
+            </div>
+        </div>
+        
+        <div class="inner-container howtouse">
+            <p>5. Add this js code to your controller</p>
             <div class="code">
                 <textarea class="form-control" readonly="readonly" rows="22">
-    // model for bs-table
-    $scope.contactList = [];
+// model for bs-table
+$scope.contactList = [];
 
-    // get generated list
-    $scope.contactList = GenerateData(40);
+// get generated list
+$scope.contactList = GenerateData(40);
 
-    // generate sample data
-    function GenerateData(count) {
-        var dataList = [];
-        for (var i = 0; i < count; i++)
-        {
-            // create object
-            var item = {
-                FirstName: i + " FirstName ",
-                LastName: i + " LastName ",
-                BornDate: "2014-07-10"
-            };
-            // add to list
-            dataList.push(item);
-        }
-        return dataList;
-    }</textarea>
+// generate sample data
+function GenerateData(count) {
+    var dataList = [];
+    for (var i = 0; i < count; i++)
+    {
+        // create object
+        var item = {
+            FirstName: i + " FirstName ",
+            LastName: i + " LastName ",
+            BornDate: "2014-07-10"
+        };
+        // add to list
+        dataList.push(item);
+    }
+    return dataList;
+}</textarea>
             </div>
         </div>
         
@@ -145,5 +165,17 @@
     <script type="text/javascript" src="Scripts/app/Controllers.js"></script>
     <script type="text/javascript" src="Scripts/socialite.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.page.js"></script>
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-44967878-2"]);
+        _gaq.push(["_trackPageview"]);
+
+	    (function() {
+	       var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+	       ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+	       var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+	    })();
+    </script>
 </body>
 </html>
