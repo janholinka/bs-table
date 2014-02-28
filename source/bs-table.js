@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
 BsTable - http://bs-table.com
