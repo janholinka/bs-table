@@ -8,7 +8,7 @@
     <meta name="keywords" content="BsTable, directive, HTML, CSS, JS, JavaScript, bootstrap, bootswatch, front-end, frontend, web development" />
     <meta name="author" content="Jan Holinka" />
     <title>BsTable - AngularJS directive</title>
-    <link type="text/css" href="http://bootswatch.com/flatly/bootstrap.css" rel="stylesheet" />
+    <link type="text/css" href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet" />
     <link type="text/css" href="Content/Site.css" rel="stylesheet" />
 </head>
 <body>
@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label class="control-label">Select theme:</label>
                 <select class="form-control" ng-model="page.Css">
-                    <option ng-repeat="theme in page.Themes" ng-selected="theme.css == page.Css" value="{{theme.css}}">{{theme.name}}</option>
+                    <option ng-repeat="theme in page.Themes" ng-selected="theme.cssMin == page.Css" value="{{theme.cssMin}}">{{theme.name}}</option>
                 </select>
             </div>
             <table class="table table-hover table-bordered" bs-table>
