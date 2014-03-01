@@ -74,25 +74,8 @@ angular.module("BsTableApplication", ["bsTable"]);
 // model for bs-table
 $scope.contactList = [];
 
-// get generated list
+// get contact list
 $scope.contactList = GenerateData(40);
-
-// generate sample data
-function GenerateData(count) {
-    var dataList = [];
-    for (var i = 0; i < count; i++)
-    {
-        // create object
-        var item = {
-            FirstName: i + " FirstName ",
-            LastName: i + " LastName ",
-            BornDate: "2014-07-10"
-        };
-        // add to list
-        dataList.push(item);
-    }
-    return dataList;
-}
 ```
 
 ## license
