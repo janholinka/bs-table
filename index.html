@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="BsTableDirective" ng-controller="ExampleCtrl">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BsTable is an AngularJS directive which allows pagination, sorting and page size selection with data on client side.">
-    <meta name="keywords" content="BsTable, directive, HTML, CSS, JS, JavaScript, bootstrap, bootswatch, front-end, frontend, web development">
-    <meta name="author" content="Jan Holinka">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="BsTable is an AngularJS directive which allows pagination, sorting and page size selection with data on client side." />
+    <meta name="keywords" content="BsTable, directive, HTML, CSS, JS, JavaScript, bootstrap, bootswatch, front-end, frontend, web development" />
+    <meta name="author" content="Jan Holinka" />
     <title>BsTable - AngularJS directive</title>
-    <link type="text/css" href="Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" ng-href="{{page.Css}}" ng-if="page.Css" rel="stylesheet" />
     <link type="text/css" href="Content/Site.css" rel="stylesheet" />
 </head>
 <body>
@@ -34,123 +34,26 @@
             </ul>
         </div>
 
-        <div class="inner-container howtouse" ng-app="BsTableDirective">
+        <div class="inner-container sample">
             <h2 id="working-sample">Working sample</h2>
-            <p>Don't touch!</p>
-            <div class="code" ng-controller="ExampleCtrl">
-                <table class="table table-hover table-bordered" bs-table>
-                    <tr ng-repeat="contact in contactList">
-                        <td data-title="First name">{{contact.FirstName}}</td>
-                        <td data-title="Last name">{{contact.LastName}}</td>
-                        <td data-title="Born date">{{contact.BornDate | date}}</td>
-                        <td data-type="command" class="action-column">
-                            <button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)">Show</button>
-                            <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
-                            <button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)">Remove</button>
-                        </td>
-                    </tr>
-                </table>
+            <div class="form-group">
+                <label class="control-label">Select theme:</label>
+                <select class="form-control" ng-model="page.Css">
+                    <option ng-repeat="theme in page.Themes" ng-selected="theme.css == page.Css" value="{{theme.css}}">{{theme.name}}</option>
+                </select>
             </div>
-        </div>
-        
-        <div class="inner-container howtouse">
-            <h2 id="how-to-use">How to use? It's easy</h2>
-            <p>1. Include necessary source files</p>
-            <div class="code">
-                <textarea class="form-control" readonly="readonly" rows="6">
-// you can easily implement any bootstrap theme from http://bootswatch.com
-&#060link type="text/css" href="/bootstrap/bootstrap.min.css" rel="stylesheet" /&#062
-// include latest jquery.min.js
-&#060script type="text/javascript" src="/js/jquery.min.js"&#062&#060/script&#062
-// include bs-table.min.js
-&#060script type="text/javascript" src="/js/bs-table.min.js"&#062&#060/script&#062</textarea>
-            </div>
-        </div>
-
-        <div class="inner-container howtouse">
-            <p>2. Add this css code to your main css file (not necessary)</p>
-            <div class="code">
-                <textarea class="form-control" readonly="readonly" rows="19">
-.action-column{
-    width: 185px;
-}
-.table th:hover{
-    text-decoration: underline;
-    cursor: pointer;
-}
-.table tfoot .pagination{
-    float: right;
-    margin: 0;
-}
-.table tfoot .pagination li{
-    cursor: pointer;
-}
-.table tfoot .select-page-size{
-    width: 90px;
-    float: right;
-    margin-right: 8px;
-}</textarea>
-            </div>
-        </div>
-        
-        <div class="inner-container howtouse">
-            <p>3. Add dependency to your application</p>
-            <div class="code">
-                <textarea class="form-control" readonly="readonly" rows="1">
-angular.module("BsTableApplication", ["bsTable"]);</textarea>
-            </div>
-        </div>
-        
-        <div class="inner-container howtouse">
-            <p>4. Add this html code to your template</p>
-            <div class="code">
-                <textarea class="form-control" readonly="readonly" rows="12">
-&#060table class="table table-hover table-bordered" bs-table&#062
-    &#060tr ng-repeat="contact in contactList"&#062
-        &#060td data-title="First name"&#062{{contact.FirstName}}&#060/td&#062
-        &#060td data-title="Last name"&#062{{contact.LastName}}&#060/td&#062
-        &#060td data-title="Born date"&#062{{contact.BornDate | date}}&#060/td&#062
-        &#060td data-type="command" class="action-column"&#062
-            &#060button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)"&#062Show&#060/button&#062
-            &#060button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)"&#062Edit&#060/button&#062
-            &#060button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)"&#062Remove&#060/button&#062
-        &#060/td&#062
-    &#060/tr&#062
-&#060/table&#062</textarea>
-            </div>
-        </div>
-        
-        <div class="inner-container howtouse">
-            <p>5. Add this js code to your controller</p>
-            <div class="code">
-                <textarea class="form-control" readonly="readonly" rows="22">
-// model for bs-table
-$scope.contactList = [];
-
-// get generated list
-$scope.contactList = GenerateData(40);
-
-// generate sample data
-function GenerateData(count) {
-    var dataList = [];
-    for (var i = 0; i < count; i++)
-    {
-        // create object
-        var item = {
-            FirstName: i + " FirstName ",
-            LastName: i + " LastName ",
-            BornDate: "2014-07-10"
-        };
-        // add to list
-        dataList.push(item);
-    }
-    return dataList;
-}</textarea>
-            </div>
-        </div>
-        
-        <div class="inner-container howtouse">
-            <h2>That's all</h2>
+            <table class="table table-hover table-bordered" bs-table>
+                <tr ng-repeat="contact in contactList">
+                    <td data-title="First name">{{contact.FirstName}}</td>
+                    <td data-title="Last name">{{contact.LastName}}</td>
+                    <td data-title="Born date">{{contact.BornDate | date}}</td>
+                    <td data-type="command" class="action-column">
+                        <button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)">Show</button>
+                        <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
+                        <button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)">Remove</button>
+                    </td>
+                </tr>
+            </table>
         </div>
         
         <div class="inner-container createdby">
@@ -163,6 +66,7 @@ function GenerateData(count) {
     <script type="text/javascript" src="Scripts/bs-table.min.js"></script>
     <script type="text/javascript" src="Scripts/app/App.js"></script>
     <script type="text/javascript" src="Scripts/app/Controllers.js"></script>
+    <script type="text/javascript" src="Scripts/app/Services.js"></script>
     <script type="text/javascript" src="Scripts/socialite.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.page.js"></script>
     

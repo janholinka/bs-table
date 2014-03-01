@@ -2,4 +2,4 @@
 
 /* app module */
 
-angular.module("BsTableDirective", ["bsTable", "BsTableDirective.Controllers"]);
+angular.module("BsTableDirective", ["bsTable", "BsTableDirective.Controllers", "BsTableDirective.Services"]);

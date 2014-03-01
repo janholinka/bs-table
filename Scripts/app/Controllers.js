@@ -3,9 +3,15 @@
 /* controllers module */
 
 angular.module("BsTableDirective.Controllers", [])
-    .controller("ExampleCtrl", ["$scope", function ($scope) {
+    .controller("ExampleCtrl", ["$scope", "BootswatchService", function ($scope, BootswatchService) {
         // scope models
+        $scope.page = { Css: "http://bootswatch.com/flatly/bootstrap.css" };
         $scope.contactList = [];
+        // get themes from bootswatch
+        BootswatchService.GetAll().success(function (result) {
+            // set themes to scope
+            $scope.page.Themes = result.themes;
+        });
         // get data for bs-table
         $scope.contactList = GenerateData(20);
         // show function for bs-table

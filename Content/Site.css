@@ -69,10 +69,6 @@ h1, h2, h3 {
     text-align: center;
 }
 
-.container .inner-container.howtouse h2 {
-    margin: 100px 0 0 0;
-}
-
 .container .inner-container.createdby {
     margin: 40px 0 0 0;
     padding: 0 0 30px 0;
@@ -110,40 +106,39 @@ h1, h2, h3 {
     width: 65px;
 }
 
-.container .inner-container .code {
+.container .inner-container.sample {
     margin: 100px 0 0 0;
 }
 
-.container .inner-container .code h2,
-.container .inner-container .code p {
-    text-align: center;
+.container .inner-container.sample .form-group {
+    margin: 50px 0 0 0;
 }
 
-.container .inner-container .code textarea {
+.container .inner-container textarea {
     margin: 30px 0 0 0;
     overflow: hidden;
     resize: none;
 }
 
-.container .inner-container .code .action-column{
-    width: 185px;
+.container .inner-container .action-column{
+    width: 230px;
 }
 
-.container .inner-container .code .table th:hover{
+.container .inner-container .table th:hover{
     text-decoration: underline;
     cursor: pointer;
 }
 
-.container .inner-container .code .table tfoot .pagination{
+.container .inner-container .table tfoot .pagination{
     float: right;
     margin: 0;
 }
 
-.container .inner-container .code .table tfoot .pagination li{
+.container .inner-container .table tfoot .pagination li{
     cursor: pointer;
 }
 
-.container .inner-container .code .table tfoot .select-page-size{
+.container .inner-container .table tfoot .select-page-size{
     width: 90px;
     float: right;
     margin-right: 8px;
