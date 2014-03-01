@@ -114,14 +114,12 @@ h1, h2, h3 {
     margin: 50px 0 0 0;
 }
 
-.container .inner-container textarea {
-    margin: 30px 0 0 0;
-    overflow: hidden;
-    resize: none;
-}
-
 .container .inner-container .action-column{
     width: 230px;
+}
+
+.container .inner-container .table{
+    margin: 20px 0 0 0;
 }
 
 .container .inner-container .table th:hover{
