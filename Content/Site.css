@@ -95,11 +95,12 @@ h1, h2, h3 {
 }
 
 .container .inner-container.socials ul li.in-btn {
-    width: 65px;
+    width: 95px;
+    text-align: left;
 }
 
 .container .inner-container.sample {
-    margin: 100px 0 0 0;
+    margin: 80px 0 0 0;
 }
 
 .container .inner-container.preloader {
@@ -115,7 +116,7 @@ h1, h2, h3 {
 .container .inner-container.preloader .progress {
     display: inline-block;
     width: 300px;
-    margin: 20px 0 0 0;
+    margin: 15px 0 0 0;
 }
 
 .container .inner-container .action-column{

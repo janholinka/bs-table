@@ -1,0 +1,56 @@
+﻿<div class="container">
+    <link type="text/css" ng-href="{{page.Css}}" rel="stylesheet" />
+
+    <div class="inner-container top-title">
+        <h1><span>&#060table</span> bs-table<span>&#062</span></h1>
+        <p><strong>AngularJS</strong> directive</p>
+    </div>
+
+    <div class="inner-container download">
+        <a href="https://raw.github.com/janholinka/bs-table/master/source/bs-table.min.js" class="btn btn-primary"><strong>Download</strong></a>
+        <span>or</span> 
+        <a href="https://github.com/janholinka/bs-table" class="btn btn-info">view on <strong>GitHub</strong></a>
+    </div>
+
+    <div class="inner-container socials">
+        <ul>
+	        <li class="fb-btn"><a href="http://www.facebook.com/sharer.php" class="socialite facebook-like" data-href="http://bs-table.com" data-send="false" data-layout="button_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"></a></li>
+	        <li class="tw-btn"><a href="http://twitter.com/share" class="socialite twitter-share" data-url="http://bs-table.com" data-text="BsTable - AngularJS directive. Check it out!" data-via="janholinka" data-hashtags="bs-table" rel="nofollow" target="_blank"></a></li>
+	        <li class="g-btn"><a href="https://plus.google.com/share" class="socialite googleplus-one" data-size="medium" data-href="http://bs-table.com" rel="nofollow" target="_blank"></a></li>
+	        <li class="in-btn"><a href="http://www.linkedin.com/shareArticle" class="socialite linkedin-share" data-url="http://bs-table.com" data-counter="right" rel="nofollow" target="_blank"></a></li>
+        </ul>
+    </div>
+
+    <div ng-show="progress.Ready" class="inner-container sample">
+        <h2 id="working-sample">Working sample</h2>
+        <div class="form-group">
+            <label class="control-label">Select theme:</label>
+            <select class="form-control" ng-model="page.Css">
+                <option ng-repeat="theme in page.Themes" ng-selected="theme.cssMin == page.Css" value="{{theme.cssMin}}">{{theme.name}}</option>
+            </select>
+        </div>
+        <table class="table table-hover table-bordered" bs-table>
+            <tr ng-repeat="contact in contactList">
+                <td data-title="First name">{{contact.FirstName}}</td>
+                <td data-title="Last name">{{contact.LastName}}</td>
+                <td data-title="Born date">{{contact.BornDate | date}}</td>
+                <td data-type="command" class="action-column">
+                    <button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)">Show</button>
+                    <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
+                    <button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)">Remove</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div ng-hide="progress.Ready" class="inner-container preloader">
+        <p>Please wait. Sample is loading...</p>
+        <div class="progress progress-striped active">
+            <div class="progress-bar" style="width: 100%"></div>
+        </div>
+    </div>
+        
+    <div class="inner-container createdby">
+        <p>Created with &#10084; in <a href="http://goo.gl/7bz1MF">Prague</a> by <a href="http://www.janholinka.net">Jan Holinka</a></p>
+    </div>
+</div>

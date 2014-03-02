@@ -45,4 +45,6 @@ angular.module("BsTableDirective.Controllers", [])
             }
             return dataList;
         }
+        // init socialite jquery plugin
+        Socialite.load();
     }]);
