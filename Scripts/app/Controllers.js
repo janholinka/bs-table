@@ -7,10 +7,13 @@ angular.module("BsTableDirective.Controllers", [])
         // scope models
         $scope.page = { Css: "http://bootswatch.com/flatly/bootstrap.min.css" };
         $scope.contactList = [];
+        $scope.progress = { Ready: false };
         // get themes from bootswatch
         BootswatchService.GetAll().success(function (result) {
             // set themes to scope
             $scope.page.Themes = result.themes;
+            // hide progress
+            $scope.progress = { Ready: true };
         });
         // get data for bs-table
         $scope.contactList = GenerateData(20);

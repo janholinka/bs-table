@@ -35,7 +35,7 @@
             </ul>
         </div>
 
-        <div class="inner-container sample">
+        <div ng-show="progress.Ready" class="inner-container sample">
             <h2 id="working-sample">Working sample</h2>
             <div class="form-group">
                 <label class="control-label">Select theme:</label>
@@ -55,6 +55,13 @@
                     </td>
                 </tr>
             </table>
+        </div>
+
+        <div ng-hide="progress.Ready" class="inner-container preloader">
+            <p>Please wait. Sample is loading...</p>
+            <div class="progress progress-striped active">
+              <div class="progress-bar" style="width: 100%"></div>
+            </div>
         </div>
         
         <div class="inner-container createdby">
