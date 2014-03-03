@@ -6,7 +6,7 @@ Easy to implement with any theme from http://bootswatch.com/ site.
 
 ## working sample
 
-You can find working sample here: http://www.bs-table.com/#working-sample
+You can find working sample here: http://www.bs-table.com
 
 ## how to use
 
