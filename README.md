@@ -38,7 +38,7 @@ You can find working sample here: http://www.bs-table.com
 .table tfoot .pagination li{
     cursor: pointer;
 }
-.table tfoot .select-page-size{
+.table tfoot select{
     width: 90px;
     float: right;
     margin-right: 8px;
@@ -57,16 +57,14 @@ angular.module("BsTableApplication", ["bsTable"]);
 <table class="table table-hover table-bordered" bs-table>
     <tr ng-repeat="contact in contactList">
         <td data-title="First name">{{contact.FirstName}}</td>
-        <td data-title="Last name">{{contact.LastName}}</td>
-        <td data-title="Born date">{{contact.BornDate | date}}</td>
+        <td data-title="Last name">{{contact.LastName | removeDiacritics}}</td>
         <td data-type="command" class="action-column">
-            <button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)">Show</button>
             <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
-            <button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)">Remove</button>
         </td>
     </tr>
 </table>
 ```
+For columns that contains text use attribute *data-title="Text of title"* and for columns with buttons use *data-type="command"*.
 
 5) Add this js code to your controller
 
