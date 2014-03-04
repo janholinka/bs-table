@@ -64,7 +64,7 @@ angular.module("BsTableApplication", ["bsTable"]);
     </tr>
 </table>
 ```
-For columns that contains text use attribute *data-title="Text of title"* and for columns with buttons use *data-type="command"*.
+For columns that contains text use attribute **data-title="Text of title"** and for columns with buttons use **data-type="command"**.
 
 5) Add this js code to your controller
 
