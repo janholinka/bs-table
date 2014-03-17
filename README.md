@@ -49,7 +49,7 @@ For columns that contains text use attribute **data-title="Text of title"** and 
 $scope.contactList = [];
 
 // get contact list
-$scope.contactList = GenerateData(40);
+$scope.contactList = SomeService.GetAll();
 ```
 5) Additional css code (not necessary)
 
