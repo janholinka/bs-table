@@ -34,7 +34,7 @@ angular.module("BsTableApplication", ["bsTable"]);
     <tr ng-repeat="contact in contactList">
         <td data-title="First name">{{contact.FirstName}}</td>
         <td data-title="Last name">{{contact.LastName | removeDiacritics}}</td>
-        <td data-type="command" class="action-column">
+        <td data-title="Actions" data-type="command" class="action-column">
             <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
         </td>
     </tr>
