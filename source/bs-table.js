@@ -32,12 +32,13 @@ angular.module("bsTable", [])
                 angular.forEach(tBodyRow.children("td"), function (element) {
                     // get column
                     var column = angular.element(element),
-                        columnType = column.attr("data-type");
+                        columnType = column.attr("data-type"),
+                        title = column.attr("data-title");
 
                     // if column does not contain data
                     if (columnType == "command") {
                         // add empty column to thead
-                        headerRow.append("<th></th>");
+                        headerRow.append("<th>" + title + "</th>");
 
                         // increment total totalRows
                         totalRows += 1;
@@ -49,8 +50,7 @@ angular.module("bsTable", [])
                         expressionValue = expression.replace(/[{}\s]/g, ""),
                         name = expressionValue.split(/\.(.+)?/)[1].split(/\|/)[0],
                         filter = expressionValue.split(/\.(.+)?/)[1].split(/\|/)[1],
-                        filterAttr = (!filter) ? "" : "filter=\"" + filter + "\"",
-                        title = column.attr("data-title");
+                        filterAttr = (!filter) ? "" : "filter=\"" + filter + "\"";
 
                     // add column with data to thead
                     headerRow.append("<th name=\"" + name + "\" " + filterAttr + ">" + title + "<span style=\"padding-left: 4px;\"></span></th>");
