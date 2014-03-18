@@ -40,7 +40,7 @@ angular.module("BsTableApplication", ["bsTable"]);
     </tr>
 </table>
 ```
-For specify title of column use **data-title="Text of title"** attribute. If column does not contain AngularJS binding expression then you have to add **data-type="command"** attribute to the column.
+For specification title of column use **data-title="Text of title"** attribute. If column does not contain AngularJS binding expression then you have to add **data-type="command"** attribute to the column.
 
 4) Add this js code to your controller
 
