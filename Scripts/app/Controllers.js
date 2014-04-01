@@ -29,10 +29,6 @@ angular.module("BsTableDirective.Controllers", [])
         $scope.Remove = function (contact) {
             alert(JSON.stringify(contact));
         };
-        // get value function for bs-table
-        $scope.HeaderColumnClick = function () {
-            alert("Clicked!");
-        };
         // generate data
         function GenerateData(count) {
             var dataList = [];
