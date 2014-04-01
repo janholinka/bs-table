@@ -31,7 +31,7 @@
         </div>
         <table class="table table-hover table-bordered" bs-table>
             <tr ng-repeat="contact in contactList">
-                <td data-title="First name">{{contact.FirstName}}</td>
+                <td data-title="First name" data-header-click="HeaderColumnClick()">{{contact.FirstName}}</td>
                 <td data-title="Last name">{{contact.LastName}}</td>
                 <td data-title="Born date">{{contact.BornDate | date}}</td>
                 <td data-title="Actions" data-type="command" class="action-column">
