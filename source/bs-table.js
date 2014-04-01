@@ -33,12 +33,13 @@ angular.module("bsTable", [])
                     // get column
                     var column = angular.element(element),
                         columnType = column.attr("data-type"),
-                        title = column.attr("data-title");
+                        title = column.attr("data-title"),
+                        headerClick = column.attr("data-header-click");
 
                     // if column does not contain data
                     if (columnType == "command") {
                         // add empty column to thead
-                        headerRow.append("<th>" + title + "</th>");
+                        headerRow.append("<th " + (headerClick != "" && headerClick !== undefined ? "ng-click=\"" + headerClick + "\"" : "") + ">" + title + "</th>");
 
                         // increment total totalRows
                         totalRows += 1;
@@ -53,7 +54,7 @@ angular.module("bsTable", [])
                         filterAttr = (!filter) ? "" : "filter=\"" + filter + "\"";
 
                     // add column with data to thead
-                    headerRow.append("<th name=\"" + name + "\" " + filterAttr + ">" + title + "<span style=\"padding-left: 4px;\"></span></th>");
+                    headerRow.append("<th " + (headerClick != "" && headerClick !== undefined ? "ng-click=\"" + headerClick + "\"" : "") + " name=\"" + name + "\" " + filterAttr + ">" + title + "<span style=\"padding-left: 4px;\"></span></th>");
 
                     // remove attribute name
                     column.removeAttr("data-title");
