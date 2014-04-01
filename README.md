@@ -32,7 +32,7 @@ angular.module("BsTableApplication", ["bsTable"]);
 ```
 <table class="table table-hover table-bordered" bs-table>
     <tr ng-repeat="contact in contactList">
-        <td data-title="First name">{{contact.FirstName}}</td>
+        <td data-title="First name" data-header-click="HeaderColumnClick()">{{contact.FirstName}}</td>
         <td data-title="Last name">{{contact.LastName | removeDiacritics}}</td>
         <td data-title="Actions" data-type="command" class="action-column">
             <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
@@ -41,6 +41,8 @@ angular.module("BsTableApplication", ["bsTable"]);
 </table>
 ```
 For specification title of column use **data-title="Text of title"** attribute. If column does not contain AngularJS binding expression then you have to add **data-type="command"** attribute to the column.
+
+If you want to handle click event on header column then you can add **data-header-click="HeaderColumnClick()"** attribute.
 
 4) Add this js code to your controller
 
