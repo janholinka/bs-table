@@ -65,12 +65,16 @@ $scope.contactList = SomeService.GetAll();
 5) Additional css code (not necessary)
 
 ```
-.action-column{ // width of three action buttons
-    width: 230px;
-}
 .table th:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+.table .action-column{
+    width: 230px;
+}
+.table .action-column:hover{
+    text-decoration: none;
+    cursor: default;
 }
 .table tfoot .pagination{
     float: right;
