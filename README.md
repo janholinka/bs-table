@@ -1,6 +1,6 @@
 # bs-table
 
-BsTable is an AngularJS directive which allows you to easily add pagination and page size selection to table on client side.
+BsTable is an AngularJS directive which adds pagination and page size selection to your table on client side.
 
 Easy to implement with any theme from http://bootswatch.com/ site.
 
