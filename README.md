@@ -30,7 +30,7 @@ angular.module("BsTableApplication", ["bsTable"]);
 3) Add this html code to your template
 
 ```
-<table class="table table-hover table-bordered" bs-table-new>
+<table class="table table-hover table-bordered" bs-table>
     <thead>
         <tr>
             <th ng-click="predicate='FirstName'; reverse=!reverse">First name</th>
