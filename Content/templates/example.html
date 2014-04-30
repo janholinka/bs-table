@@ -42,6 +42,7 @@
                 <tr ng-repeat="contact in contactList | orderBy:predicate:reverse">
                     <td>{{contact.FirstName}}</td>
                     <td>{{contact.LastName}}</td>
+                    <td>{{contact.BornDate | date}}</td>
                     <td class="action-column">
                     	<button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)">Show</button>
                     	<button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
