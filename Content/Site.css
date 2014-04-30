@@ -119,15 +119,6 @@ h1, h2, h3 {
     margin: 15px 0 0 0;
 }
 
-.container .inner-container .action-column{
-    width: 230px;
-}
-
-.container .inner-container .action-column:hover{
-    text-decoration: none;
-    cursor: default;
-}
-
 .container .inner-container .table{
     margin: 20px 0 0 0;
 }
@@ -135,6 +126,15 @@ h1, h2, h3 {
 .container .inner-container .table th:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+
+.container .inner-container .table .action-column{
+    width: 230px;
+}
+
+.container .inner-container .table .action-column:hover{
+    text-decoration: none;
+    cursor: default;
 }
 
 .container .inner-container .table tfoot .pagination{
