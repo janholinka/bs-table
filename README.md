@@ -30,14 +30,23 @@ angular.module("BsTableApplication", ["bsTable"]);
 3) Add this html code to your template
 
 ```
-<table class="table table-hover table-bordered" bs-table>
-    <tr ng-repeat="contact in contactList">
-        <td data-title="First name" data-header-click="HeaderColumnClick()">{{contact.FirstName}}</td>
-        <td data-title="Last name">{{contact.LastName | removeDiacritics}}</td>
-        <td data-title="Actions" data-type="command" class="action-column">
-            <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
-        </td>
-    </tr>
+<table class="table table-hover table-bordered" bs-table-new>
+    <thead>
+        <tr>
+            <th ng-click="predicate='FirstName'; reverse=!reverse">First name</th>
+            <th ng-click="predicate='LastName'; reverse=!reverse">Last name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="contact in contactList | orderBy:predicate:reverse">
+            <td>{{contact.FirstName}}</td>
+            <td>{{contact.LastName}}</td>
+            <td class="action-column">
+                <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
+            </td>
+        </tr>
+    </tbody>
 </table>
 ```
 For specification title of column use **data-title="Text of title"** attribute. If column does not contain AngularJS binding expression then you have to add **data-type="command"** attribute to the column.
