@@ -49,10 +49,6 @@ angular.module("BsTableApplication", ["bsTable"]);
     </tbody>
 </table>
 ```
-For specification title of column use **data-title="Text of title"** attribute. If column does not contain AngularJS binding expression then you have to add **data-type="command"** attribute to the column.
-
-If you want to handle click event on header column then you can add **data-header-click="HeaderColumnClick()"** attribute.
-
 4) Add this js code to your controller
 
 ```
