@@ -30,16 +30,25 @@
             </select>
         </div>
         <table class="table table-hover table-bordered" bs-table>
-            <tr ng-repeat="contact in contactList">
-                <td data-title="First name">{{contact.FirstName}}</td>
-                <td data-title="Last name">{{contact.LastName}}</td>
-                <td data-title="Born date">{{contact.BornDate | date}}</td>
-                <td data-title="Actions" data-type="command" class="action-column">
-                    <button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)">Show</button>
-                    <button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
-                    <button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)">Remove</button>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th ng-click="predicate='FirstName'; reverse=!reverse">First name</th>
+                    <th ng-click="predicate='LastName'; reverse=!reverse">Last name</th>
+                    <th ng-click="predicate='BornDate'; reverse=!reverse">Born date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contact in contactList | orderBy:predicate:reverse">
+                    <td>{{contact.FirstName}}</td>
+                    <td>{{contact.LastName}}</td>
+                    <td class="action-column">
+                    	<button type="button" class="btn btn-info btn-sm" ng-click="Show(contact)">Show</button>
+                    	<button type="button" class="btn btn-info btn-sm" ng-click="Edit(contact)">Edit</button>
+                    	<button type="button" class="btn btn-info btn-sm" ng-click="Remove(contact)">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
