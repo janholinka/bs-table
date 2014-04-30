@@ -2,7 +2,7 @@
 
 /* controllers module */
 
-angular.module("BsTableDirective.Controllers", [])
+angular.module("BsTableDirective.Controllers", ["BsTableDirective.Services"])
     .controller("ExampleCtrl", ["$scope", "BootswatchService", function ($scope, BootswatchService) {
         // scope models
         $scope.page = { Css: "http://bootswatch.com/flatly/bootstrap.min.css" };
