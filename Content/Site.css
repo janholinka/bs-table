@@ -121,8 +121,11 @@ h1, h2, h3 {
 
 .container .inner-container .action-column{
     width: 230px;
+}
+
+.container .inner-container .action-column:hover{
     text-decoration: none;
-    cursor: pointer;
+    cursor: default;
 }
 
 .container .inner-container .table{
