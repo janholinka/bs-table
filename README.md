@@ -38,7 +38,7 @@ angular.module("BsTableApplication", ["bsTable"]);
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody> // you can use ng-repeat in tbody as below in tr html tag
         <tr ng-repeat="contact in contactList | orderBy:predicate:reverse">
             <td>{{contact.FirstName}}</td>
             <td>{{contact.LastName}}</td>
@@ -50,7 +50,7 @@ angular.module("BsTableApplication", ["bsTable"]);
 </table>
 ```
 
-READ ME: You can use ng-repeat attribute in **tr** or **tbody** tag. 
+**READ ME**: It is possible to use ng-repeat attribute in **tr** or **tbody** tag. 
 
 4) Add this js code to your controller
 
