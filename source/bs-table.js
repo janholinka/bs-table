@@ -21,10 +21,12 @@ angular.module("bsTable", [])
             compile: function (tElement, tAttrs) {
                 // create thead for table
                 var totalCols = 0,
-                    tBodyRow = tElement.find("tbody").find("tr"),
-                    ngRepeatAttr = tBodyRow.attr("ng-repeat");
+                    tBody = tElement.find("tbody"),
+                    tBodyRow = tBody.find("tr"),
+                    ngRepeatAttr = tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat") : tBody.attr("ng-repeat"),
+                    ngRepeatExtension = " | bsTableSkip:bsTablePagination.skipAt | limitTo:bsTablePagination.pageSize";
                 // set ng-repeat attribute
-                tBodyRow.attr("ng-repeat", ngRepeatAttr + " | bsTableSkip:bsTablePagination.skipAt | limitTo:bsTablePagination.pageSize");
+                tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat", ngRepeatAttr + ngRepeatExtension) : tBody.attr("ng-repeat", ngRepeatAttr + ngRepeatExtension);
                 // get total cols
                 totalCols = tBodyRow.children("td").size();
                 // create tfoot for table
@@ -91,10 +93,10 @@ angular.module("bsTable", [])
                             // add paging to tfoot of table
                             linkElement.find(".pagination").html(paging);
                             // add event to each list item
-                            linkElement.find(".pagination").find("li").bind("click", listenerPagination);
+                            linkElement.find(".pagination").find("li").bind("click", ListenerPagination);
                         }
                         // pagination on click
-                        var listenerPagination = function () {
+                        var ListenerPagination = function () {
                             // get clicked value
                             var index = parseInt($(this).find("a").text());
                             // remove active class from all elements
