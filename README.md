@@ -49,6 +49,9 @@ angular.module("BsTableApplication", ["bsTable"]);
     </tbody>
 </table>
 ```
+
+READ ME: You can use ng-repeat attribute in **tr** or **tbody** tag. 
+
 4) Add this js code to your controller
 
 ```
