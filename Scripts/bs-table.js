@@ -21,8 +21,8 @@ angular.module("bsTable", [])
             compile: function (tElement, tAttrs) {
                 // create thead for table
                 var totalCols = 0,
-                    tBody = tElement.find("tbody"),
-                    tBodyRow = tBody.find("tr"),
+                    tBody = tElement.find("tbody").first(),
+                    tBodyRow = tBody.find("tr").first(),
                     ngRepeatAttr = tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat") : tBody.attr("ng-repeat"),
                     ngRepeatExtension = " | bsTableSkip:bsTablePagination.skipAt | limitTo:bsTablePagination.pageSize";
                 // set ng-repeat attribute
