@@ -2,8 +2,6 @@
 
 BsTable is an AngularJS directive which adds tfoot tag with pagination and page size selection to your table on client side.
 
-Easy to implement with any theme from http://bootswatch.com/ site.
-
 ## working sample
 
 You can find working sample here: http://bs-table.com
@@ -13,7 +11,7 @@ You can find working sample here: http://bs-table.com
 1) Include necessary source files
 
 ```
-// you can easily implement any bootstrap theme from http://bootswatch.com
+// add bootstrap theme from http://bootswatch.com
 <link type="text/css" href="/bootstrap/bootstrap.min.css" rel="stylesheet" />
 // include latest jquery.min.js
 <script type="text/javascript" src="/js/jquery.min.js"></script>
