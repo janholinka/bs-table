@@ -1,6 +1,6 @@
 # bs-table
 
-BsTable is an AngularJS directive which adds tfoot tag with pagination and page size selection to your table on client side.
+BsTable is an AngularJS directive which adds tfoot tag with pagination and page size selection to your table and **watches changes** on your collection in **ng-repeat** attribute.
 
 ## working sample
 
