@@ -20,8 +20,8 @@ angular.module("bsTable", [])
             scope: true,
             compile: function (tElement, tAttrs) {
                 var totalCols = 0,
-                    tBody = tElement.find("tbody").first(),
-                    tBodyRow = tBody.find("tr").first(),
+                    tBody = tElement.find("tbody:first"),
+                    tBodyRow = tBody.find("tr:first"),
                     ngRepeatAttr = tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat") : tBody.attr("ng-repeat"),
                     ngRepeatExtension = " | bsTableSkip:bsTablePagination.skipAt | limitTo:bsTablePagination.pageSize";
 
