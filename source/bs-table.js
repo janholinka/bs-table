@@ -19,16 +19,18 @@ angular.module("bsTable", [])
             restrict: "A",
             scope: true,
             compile: function (tElement, tAttrs) {
-                // create thead for table
                 var totalCols = 0,
-                    tBody = tElement.find("tbody:first"),
-                    tBodyRow = tBody.find("tr:first"),
+                    tBody = tElement.find("tbody").first(),
+                    tBodyRow = tBody.find("tr").first(),
                     ngRepeatAttr = tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat") : tBody.attr("ng-repeat"),
                     ngRepeatExtension = " | bsTableSkip:bsTablePagination.skipAt | limitTo:bsTablePagination.pageSize";
+
                 // set ng-repeat attribute
                 tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat", ngRepeatAttr + ngRepeatExtension) : tBody.attr("ng-repeat", ngRepeatAttr + ngRepeatExtension);
+
                 // get total cols
                 totalCols = tBodyRow.children("td").size();
+
                 // create tfoot for table
                 var footer = "<tfoot>" +
                                 "<tr><td colspan=\"" + totalCols + "\">" +
@@ -40,76 +42,94 @@ angular.module("bsTable", [])
                                     "</td>" +
                                 "</tr>" +
                              "</tfoot>";
+
                 // add tfoot to table
                 tElement.append(footer);
 
-                return {
-                    pre: function (scope, linkElement) {
-                        // get and set scope model
-                        var grid = scope.bsTablePagination = {};
-                        // create pagination for table
-                        var pager = linkElement.children("tfoot").children("tr").children("td"),
-                            collectionName = ngRepeatAttr.match(/^\s*(.+)\s+in\s+(.*)\s*$/)[2],
-                            collection = scope.$eval(collectionName),
-                            totalRows = collection.length;
-                        // watch changes with collection
-                        scope.$watchCollection(collectionName, function () {
-                            // get total totalRows of rows
-                            totalRows = scope.$eval(collectionName).length;
-                            // set last page
-                            grid.lastPage = Math.ceil(totalRows / grid.pageSize);
-                            // recreate pagination
-                            RenderPagination();
-                        });
-                        // watch changes with grid pageSize
-                        scope.$watch("bsTablePagination.pageSize", function () {
-                            // recreate pagination
-                            RenderPagination();
-                        });
-                        // set grid properties
-                        grid.pageSize = 5;
+                // return link function
+                return function (scope, linkElement) {
+                    // get and set scope model
+                    var grid = scope.bsTablePagination = {};
+
+                    // create pagination for table
+                    var pager = linkElement.find("td"),
+                        collectionName = ngRepeatAttr.match(/^\s*(.+)\s+in\s+(.*)\s*$/)[2],
+                        collection = scope.$eval(collectionName),
+                        totalRows = collection.length;
+
+                    // watch changes with collection
+                    scope.$watchCollection(collectionName, function () {
+                        // get total totalRows of rows
+                        totalRows = scope.$eval(collectionName).length;
+
+                        // set last page
                         grid.lastPage = Math.ceil(totalRows / grid.pageSize);
+
+                        // recreate pagination
+                        RenderPagination();
+                    });
+
+                    // watch changes with grid pageSize
+                    scope.$watch("bsTablePagination.pageSize", function () {
+                        // recreate pagination
+                        RenderPagination();
+                    });
+
+                    // set grid properties
+                    grid.pageSize = 5;
+                    grid.lastPage = Math.ceil(totalRows / grid.pageSize);
+                    grid.page = 1;
+                    grid.skipAt = (grid.page - 1) * grid.pageSize;
+
+                    // on page size change
+                    pager.children(".select-page-size").change(function () {
+                        // get current element
+                        var gridLimit = parseInt($(this).val());
+
+                        // update grid properties
+                        grid.lastPage = Math.ceil(totalRows / gridLimit);
                         grid.page = 1;
-                        grid.skipAt = (grid.page - 1) * grid.pageSize;
-                        // on page size change
-                        pager.children(".select-page-size").change(function () {
-                            // get current element
-                            var gridLimit = parseInt($(this).val());
-                            // update grid properties
-                            grid.lastPage = Math.ceil(totalRows / gridLimit);
-                            grid.page = 1;
-                            grid.skipAt = (grid.page - 1) * gridLimit;
-                            // process all $watch(es)
-                            scope.$digest();
-                        });
-                        // render pagination function
-                        var RenderPagination = function () {
-                            // prepare empty string
-                            var paging = "";
-                            // create list items
-                            for (var i = 0; i < Math.ceil(totalRows / scope.bsTablePagination.pageSize) ; i++) {
-                                paging += "<li " + (grid.page == (i + 1) ? "class=\"active\"" : "") + "><a ng-href=\"#\">" + (i + 1) + "</a></li>";
-                            }
-                            // add paging to tfoot of table
-                            linkElement.find(".pagination").html(paging);
-                            // add event to each list item
-                            linkElement.find(".pagination").find("li").bind("click", ListenerPagination);
+                        grid.skipAt = (grid.page - 1) * gridLimit;
+
+                        // process all $watch(es)
+                        scope.$digest();
+                    });
+
+                    // render pagination function
+                    function RenderPagination () {
+                        // prepare empty string
+                        var paging = "";
+
+                        // create list items
+                        for (var i = 0; i < Math.ceil(totalRows / scope.bsTablePagination.pageSize) ; i++) {
+                            paging += "<li " + (grid.page == (i + 1) ? "class=\"active\"" : "") + "><a ng-href=\"#\">" + (i + 1) + "</a></li>";
                         }
-                        // pagination on click
-                        var ListenerPagination = function () {
-                            // get clicked value
-                            var index = parseInt($(this).find("a").text());
-                            // remove active class from all elements
-                            $(this).parent().find("li").removeClass("active");
-                            // add active class to clicked element
-                            $(this).addClass("active");
-                            // update grid properties
-                            grid.page = index;
-                            grid.skipAt = (grid.page - 1) * grid.pageSize;
-                            // process all $watch(es)
-                            scope.$digest();
-                        };
+
+                        // add paging to tfoot of table
+                        linkElement.find(".pagination").html(paging);
+
+                        // add event to each list item
+                        linkElement.find(".pagination").find("li").bind("click", ListenerPagination);
                     }
+
+                    // pagination on click
+                    function ListenerPagination () {
+                        // get clicked value
+                        var index = parseInt($(this).find("a").text());
+
+                        // remove active class from all elements
+                        $(this).parent().find("li").removeClass("active");
+
+                        // add active class to clicked element
+                        $(this).addClass("active");
+
+                        // update grid properties
+                        grid.page = index;
+                        grid.skipAt = (grid.page - 1) * grid.pageSize;
+
+                        // process all $watch(es)
+                        scope.$digest();
+                    };
                 }
             }
         };
