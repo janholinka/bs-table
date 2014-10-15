@@ -129,7 +129,7 @@ angular.module("bsTable", [])
 
                         // process all $watch(es)
                         scope.$digest();
-                    };
+                    }
                 }
             }
         };
