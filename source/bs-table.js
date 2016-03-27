@@ -22,11 +22,28 @@ angular.module("bsTable", [])
                 var totalCols = 0,
                     tBody = tElement.find("tbody:first"),
                     tBodyRow = tBody.find("tr:first"),
-                    ngRepeatAttr = tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat") : tBody.attr("ng-repeat"),
                     ngRepeatExtension = " | bsTableSkip:bsTablePagination.skipAt | limitTo:bsTablePagination.pageSize";
 
-                // set ng-repeat attribute
-                tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat", ngRepeatAttr + ngRepeatExtension) : tBody.attr("ng-repeat", ngRepeatAttr + ngRepeatExtension);
+                if (!tBody.is("[ng-repeat]") && !tBody.is("[data-ng-repeat]") &&
+                    !tBodyRow.is("[ng-repeat]") && !tBodyRow.is("[data-ng-repeat]")) {
+                    console.warn("BsTable directive: ng-repeat attribute not found!");
+                    return;
+                }
+
+                // get ng-repeat attribute name
+                var ngRepeatAttrName = tBody.is("[ng-repeat]") || tBodyRow.is("[ng-repeat]") ?
+                    "ng-repeat" :
+                    "data-ng-repeat";
+
+                // set ng-repeat attribute value
+                var ngRepeatAttrValue = tBody.is("[" + ngRepeatAttrName + "]") ?
+                    tBody.attr(ngRepeatAttrName) :
+                    tBodyRow.attr(ngRepeatAttrName);
+
+                // set value and extension to element
+                tBody.is("[" + ngRepeatAttrName + "]") ?
+                    tBody.attr(ngRepeatAttrName, ngRepeatAttrValue + ngRepeatExtension) :
+                    tBodyRow.attr(ngRepeatAttrName, ngRepeatAttrValue + ngRepeatExtension);
 
                 // get total cols
                 totalCols = tBodyRow.children("td").size();
@@ -53,7 +70,7 @@ angular.module("bsTable", [])
 
                     // create pagination for table
                     var pager = linkElement.find("td"),
-                        collectionName = ngRepeatAttr.match(/^\s*(.+)\s+in\s+(.*)\s*$/)[2],
+                        collectionName = ngRepeatAttrValue.match(/^\s*(.+)\s+in\s+(.*)\s*$/)[2],
                         collection = scope.$eval(collectionName),
                         totalRows = collection.length;
 
@@ -96,7 +113,7 @@ angular.module("bsTable", [])
                     });
 
                     // render pagination function
-                    function RenderPagination () {
+                    function RenderPagination() {
                         // prepare empty string
                         var paging = "";
 
@@ -113,7 +130,7 @@ angular.module("bsTable", [])
                     }
 
                     // pagination on click
-                    function ListenerPagination () {
+                    function ListenerPagination() {
                         // get clicked value
                         var index = parseInt($(this).find("a").text());
 
