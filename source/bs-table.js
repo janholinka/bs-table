@@ -22,11 +22,28 @@ angular.module("bsTable", [])
                 var totalCols = 0,
                     tBody = tElement.find("tbody:first"),
                     tBodyRow = tBody.find("tr:first"),
-                    ngRepeatAttr = tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat") : tBody.attr("ng-repeat"),
+                    ngRepeatTag,
+                    ngRepeatAttr,
                     ngRepeatExtension = " | bsTableSkip:bsTablePagination.skipAt | limitTo:bsTablePagination.pageSize";
+                    
+                    if ((tBodyRow.attr("ng-repeat") !== undefined) && (tBodyRow.attr("data-ng-repeat") == undefined)) {
+                        ngRepeatTag = "ng-repeat";
+                        ngRepeatAttr = tBodyRow.attr("ng-repeat");
+                    } else if ((tBodyRow.attr("ng-repeat") == undefined) && (tBodyRow.attr("data-ng-repeat") !== undefined)) {
+                        ngRepeatTag = "data-ng-repeat";
+                        ngRepeatAttr = tBodyRow.attr("data-ng-repeat");
+                    } else if ((tBody.attr("ng-repeat") !== undefined) && (tBody.attr("data-ng-repeat") == undefined)) {
+                        ngRepeatTag = "ng-repeat";
+                        ngRepeatAttr = tBody.attr("ng-repeat");
+                    } else if ((tBody.attr("ng-repeat") == undefined) && (tBody.attr("data-ng-repeat") !== undefined)) {
+                        ngRepeatTag = "data-ng-repeat";
+                        ngRepeatAttr = tBody.attr("data-ng-repeat");
+                    } else {
+                        /* TODO: maybe proper error here? */
+                    }
 
                 // set ng-repeat attribute
-                tBodyRow.attr("ng-repeat") !== undefined ? tBodyRow.attr("ng-repeat", ngRepeatAttr + ngRepeatExtension) : tBody.attr("ng-repeat", ngRepeatAttr + ngRepeatExtension);
+                tBodyRow.attr(ngRepeatTag) !== undefined ? tBodyRow.attr(ngRepeatTag, ngRepeatAttr + ngRepeatExtension) : tBody.attr(ngRepeatTag, ngRepeatAttr + ngRepeatExtension);
 
                 // get total cols
                 totalCols = tBodyRow.children("td").size();
