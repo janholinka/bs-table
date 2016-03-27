@@ -1,11 +1,11 @@
-﻿"use strict";
+"use strict";
 
 /* controllers module */
 
 angular.module("BsTableDirective.Controllers", ["BsTableDirective.Services"])
     .controller("ExampleCtrl", ["$scope", "BootswatchService", function ($scope, BootswatchService) {
         // scope models
-        $scope.page = { Css: "http://bootswatch.com/flatly/bootstrap.min.css" };
+        $scope.page = { Css: "https://bootswatch.com/flatly/bootstrap.min.css" };
         $scope.contactList = [];
         $scope.progress = { Ready: false };
         // get themes from bootswatch
