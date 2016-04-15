@@ -82,12 +82,12 @@ angular.module("bsTable", [])
                         // set last page
                         grid.lastPage = Math.ceil(totalRows / grid.pageSize);
 
-						//handle abrupt change in data length (causing grid.page greater then grid.lastPage)
+                        //handle abrupt change in data length (causing grid.page greater then grid.lastPage)
                         if((grid.lastPage !== 0) && (grid.lastPage < grid.page)){
-                        	grid.page = 1;
-							grid.skipAt = (grid.page - 1) * grid.pageSize;
-						}
-						
+                            grid.page = 1;
+                            grid.skipAt = (grid.page - 1) * grid.pageSize;
+                        }
+                        
                         // recreate pagination
                         RenderPagination();
                     });
