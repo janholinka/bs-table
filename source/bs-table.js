@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 /*
 BsTable - http://bs-table.com
@@ -79,8 +79,13 @@ angular.module("bsTable", [])
                         // get total totalRows of rows
                         totalRows = scope.$eval(collectionName).length;
 
-                        // set last page
+                        // update grid properties
                         grid.lastPage = Math.ceil(totalRows / grid.pageSize);
+           
+                        if(grid.lastPage !== 0 && grid.lastPage < grid.page) {
+                            grid.page = 1;
+                            grid.skipAt = (grid.page - 1) * grid.pageSize;
+                        }
 
                         // recreate pagination
                         RenderPagination();
