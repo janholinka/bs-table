@@ -52,10 +52,12 @@ angular.module("bsTable", [])
                 var footer = "<tfoot>" +
                                 "<tr><td colspan=\"" + totalCols + "\">" +
                                     "<ul class=\"pagination\"></ul>" +
-                                    "<select ng-model=\"bsTablePagination.pageSize\" class=\"form-control select-page-size\">" +
-                                        "<option value=\"5\" selected=\"selected\">5</option>" +
-                                        "<option value=\"10\">10</option>" +
-                                        "<option value=\"20\">20</option><option value=\"40\">40</option></select>" +
+                                        "<select ng-model=\"bsTablePagination.pageSize\" class=\"form-control select-page-size\" convert-to-number>" +
+                                            "<option value=\"5\">5</option>" +
+                                            "<option value=\"10\">10</option>" +
+                                            "<option value=\"20\">20</option>" +
+                                            "<option value=\"40\">40</option>" +
+                                        "</select>" +
                                     "</td>" +
                                 "</tr>" +
                              "</tfoot>";
@@ -153,6 +155,20 @@ angular.module("bsTable", [])
                         scope.$digest();
                     }
                 }
+            }
+        };
+    })
+    .directive("convertToNumber", function () {
+        return {
+            require: "ngModel",
+            link: function (scope, element, attrs, ngModel) {
+                ngModel.$parsers.push(function (val) {
+                    return val ? parseInt(val, 10) : null;
+                });
+
+                ngModel.$formatters.push(function (val) {
+                    return val ? "" + val : null;
+                });
             }
         };
     })
