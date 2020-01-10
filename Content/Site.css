@@ -86,10 +86,6 @@ h1, h2, h3 {
     width: 82px;
 }
 
-.container .inner-container.socials ul li.g-btn {
-    width: 58px;
-}
-
 .container .inner-container.socials ul li.fb-btn {
     width: 82px;
 }
@@ -107,7 +103,6 @@ h1, h2, h3 {
     margin: 100px 0 0 0;
     text-align: center;
 }
-
 
 .container .inner-container.sample .form-group {
     margin: 50px 0 0 0;
