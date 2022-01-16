@@ -4,7 +4,7 @@ BsTable is an AngularJS directive which adds tfoot tag with pagination and page 
 
 ## working sample
 
-You can find working sample here: http://bs-table.com
+You can find working sample here: http://janholinka.github.io/bs-table
 
 ## how to use
 
